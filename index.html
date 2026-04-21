@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Min Portfolio</title>
+    <!-- Tailwind CSS via CDN för styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .card {
+            transition: transform 0.2s;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-900">
+
+    <!-- Header / Navigation -->
+    <header class="bg-white shadow-sm sticky top-0 z-10">
+        <nav class="max-w-5xl mx-auto px-6 py-4 flex justify-between items-center">
+            <h1 class="text-xl font-bold tracking-tight">Mitt Namn</h1>
+            <div class="space-x-6">
+                <a href="#om" class="hover:text-red-600 transition font-medium">Om mig</a>
+                <a href="#projekt" class="hover:text-red-600 transition font-medium">Projekt</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="om" class="max-w-5xl mx-auto px-6 py-20 text-center border-b border-gray-100">
+        <h2 class="text-4xl md:text-5xl font-extrabold mb-4 text-gray-900">Välkommen till min <span class="text-red-600">portfolio</span></h2>
+        <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+            Här har jag samlat mina viktigaste dokument och projekt som jag har skapat under min gymnasietid.
+        </p>
+    </section>
+
+    <!-- Portfolio Grid -->
+    <main id="projekt" class="max-w-5xl mx-auto px-6 py-20">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            
+            <!-- CV Card -->
+            <div class="card bg-white p-6 rounded-2xl shadow-md border border-gray-100 flex flex-col justify-between">
+                <div>
+                    <div class="bg-red-50 text-red-600 w-12 h-12 rounded-lg flex items-center justify-center mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Mitt CV</h3>
+                    <p class="text-gray-600 text-sm mb-6">Här kan du läsa om min utbildning, mina erfarenheter och mina färdigheter.</p>
+                </div>
+                <a href="cv.pdf" target="_blank" class="bg-red-600 text-white text-center py-2 rounded-lg font-medium hover:bg-red-700 transition shadow-sm">Läs mitt CV</a>
+            </div>
+
+            <!-- Gymnasiearbete Card -->
+            <div class="card bg-white p-6 rounded-2xl shadow-md border border-gray-100 flex flex-col justify-between">
+                <div>
+                    <div class="bg-red-50 text-red-600 w-12 h-12 rounded-lg flex items-center justify-center mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Gymnasiearbete</h3>
+                    <p class="text-gray-600 text-sm mb-6">En vetenskaplig rapport om mitt specialiserade område under gymnasiet.</p>
+                </div>
+                <a href="gymnasiearbete.pdf" target="_blank" class="bg-red-600 text-white text-center py-2 rounded-lg font-medium hover:bg-red-700 transition shadow-sm">Visa rapport</a>
+            </div>
+
+            <!-- Spel Card -->
+            <div class="card bg-white p-6 rounded-2xl shadow-md border border-gray-100 flex flex-col justify-between">
+                <div>
+                    <div class="bg-red-50 text-red-600 w-12 h-12 rounded-lg flex items-center justify-center mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 5v2m0 4v2m0 4v2M5 5a2 2 0 012-2h10a2 2 0 012 2v10a2 2 0 01-2 2H7a2 2 0 01-2-2V5z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Mina Spel</h3>
+                    <p class="text-gray-600 text-sm mb-6">Ett interaktivt projekt som visar min förmåga att koda spel och logik.</p>
+                </div>
+                <a href="mitt-spel/index.html" class="bg-red-600 text-white text-center py-2 rounded-lg font-medium hover:bg-red-700 transition shadow-sm">Spela nu</a>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white py-10 border-t border-gray-200">
+        <div class="max-w-5xl mx-auto px-6 text-center text-gray-500 text-sm">
+            <p>&copy; 2024 Mitt Namn. Skapad med HTML och Tailwind CSS.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
