@@ -1,1 +1,111 @@
 
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projektplanerare - Badrum</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .step-checked {
+            text-decoration: line-through;
+            color: #94a3b8;
+        }
+        .progress-transition {
+            transition: width 0.5s ease-in-out;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 min-h-screen py-8 px-4">
+    <div class="max-w-2xl mx-auto bg-white rounded-xl shadow-lg overflow-hidden">
+        <!-- Header -->
+        <div class="bg-blue-600 p-6 text-white text-center">
+            <h1 class="text-2xl font-bold">Projektplanerare: Badrumsbygge</h1>
+            <p class="text-blue-100 mt-2">Följ stegen för ett säkert och hållbart resultat</p>
+        </div>
+
+        <!-- Progress Bar -->
+        <div class="p-6 border-b">
+            <div class="flex justify-between mb-2">
+                <span class="text-sm font-medium text-slate-700">Total framgång</span>
+                <span id="progress-text" class="text-sm font-bold text-blue-600">0%</span>
+            </div>
+            <div class="w-full bg-slate-200 rounded-full h-3">
+                <div id="progress-bar" class="bg-blue-600 h-3 rounded-full progress-transition" style="width: 0%"></div>
+            </div>
+        </div>
+
+        <!-- Checklist -->
+        <div id="checklist" class="p-6 space-y-4">
+            <!-- Stegen genereras av JavaScript -->
+        </div>
+
+        <!-- Footer -->
+        <div class="bg-slate-50 p-4 text-center text-xs text-slate-500 italic">
+            Kom ihåg att följa gällande branschregler för våtrum.
+        </div>
+    </div>
+
+    <script>
+        // Data baserat på din beskrivning
+        const projectSteps = [
+            { id: 1, title: "Planering", desc: "Planera layout, rördragning och inredning." },
+            { id: 2, title: "Rivning", desc: "Ta bort gammalt material och städa rent från fukt." },
+            { id: 3, title: "Grundarbete", desc: "Bygg upp väggar och golv med fukttåliga skivor och rätt fall." },
+            { id: 4, title: "VVS & El", desc: "Installera vatten, avlopp och elsäkerhetszoner." },
+            { id: 5, title: "Tätskikt", desc: "Applicera det skyddande lagret på golv och väggar." },
+            { id: 6, title: "Kakel & Klinker", desc: "Sätt plattor och foga noggrant." },
+            { id: 7, title: "Inredning", desc: "Montera toalett, dusch, handfat och möbler." },
+            { id: 8, title: "Ventilation", desc: "Installera fläkt och belysning för att motverka mögel." },
+            { id: 9, title: "Slutkontroll", desc: "Testa funktioner och kontrollera eventuella läckage." }
+        ];
+
+        const checklistElement = document.getElementById('checklist');
+        const progressBar = document.getElementById('progress-bar');
+        const progressText = document.getElementById('progress-text');
+
+        function updateProgress() {
+            const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+            const checkedCount = Array.from(checkboxes).filter(cb => cb.checked).length;
+            const percentage = Math.round((checkedCount / projectSteps.length) * 100);
+            
+            progressBar.style.width = `${percentage}%`;
+            progressText.innerText = `${percentage}%`;
+        }
+
+        function createChecklist() {
+            projectSteps.forEach(step => {
+                const stepDiv = document.createElement('div');
+                stepDiv.className = 'flex items-start p-4 border rounded-lg hover:bg-slate-50 transition-colors cursor-pointer border-slate-200';
+                
+                stepDiv.innerHTML = `
+                    <div class="flex items-center h-6">
+                        <input id="step-${step.id}" type="checkbox" 
+                               class="w-5 h-5 text-blue-600 rounded border-slate-300 focus:ring-blue-500 cursor-pointer">
+                    </div>
+                    <label for="step-${step.id}" class="ml-4 cursor-pointer">
+                        <h3 class="font-bold text-slate-800" id="title-${step.id}">${step.title}</h3>
+                        <p class="text-sm text-slate-600">${step.desc}</p>
+                    </label>
+                `;
+
+                const checkbox = stepDiv.querySelector('input');
+                checkbox.addEventListener('change', (e) => {
+                    const title = document.getElementById(`title-${step.id}`);
+                    if (e.target.checked) {
+                        title.classList.add('step-checked');
+                    } else {
+                        title.classList.remove('step-checked');
+                    }
+                    updateProgress();
+                });
+
+                checklistElement.appendChild(stepDiv);
+            });
+        }
+
+        // Initiera checklistan vid start
+        window.onload = createChecklist;
+    </script>
+</body>
+</html>
